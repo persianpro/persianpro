@@ -42,6 +42,17 @@
             color: #666;
             font-weight: 300;
         }
+        .month-year {
+            text-align: center;
+            font-size: 1.4em;
+            color: #1565C0;
+            font-weight: 500;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
         section {
             background: white;
             margin-bottom: 40px;
@@ -124,6 +135,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             h2 { font-size: 1.8em; }
+            .month-year { font-size: 1.2em; }
             table { font-size: 0.9em; }
             th, td { padding: 12px; }
             section { padding: 25px; }
@@ -136,6 +148,10 @@
             <h1>Learn Persian online with PersianPro</h1>
             <p class="subtitle">Master the language of Iran with expert-led programs</p>
         </header>
+
+        <div class="month-year" id="monthYear">
+            December 2025
+        </div>
 
         <section>
             <h2>Persian Language Programmes</h2>
@@ -203,5 +219,24 @@
             <p>Phone: <a href="tel:+919960269323">+91 9960 269 323</a></p>
         </section>
     </div>
+
+    <script>
+        function updateMonthYear() {
+            const now = new Date();
+            const months = [
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            const monthName = months[now.getMonth()];
+            const year = now.getFullYear();
+            document.getElementById('monthYear').textContent = `${monthName} ${year}`;
+        }
+        
+        // Update on page load
+        updateMonthYear();
+        
+        // Update every month (checks daily but only changes monthly)
+        setInterval(updateMonthYear, 24 * 60 * 60 * 1000);
+    </script>
 </body>
 </html>
